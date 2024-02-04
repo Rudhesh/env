@@ -1,0 +1,70 @@
+{
+  "IndexPage": {
+    "title": "Breitfuss",
+    "description": "This is a basic example that demonstrates the usage of <code>next-intl</code> with the Next.js App Router. Try changing the locale in the top right corner and see how the content changes."
+  },
+  "Navbar": {
+    "title1": "User-Admin",
+    "title2": "Data-Admin",
+    "title3": "Dashboard",
+    "title4": "Panel"
+  },
+  "Sidebar": {
+    "heading1": "HOME",
+    "heading2": "VIEW",
+    "heading3": "CONFIGURATION",
+    "heading4": "MANAGEMENT",
+    "subtitle1": "Dashboard",
+    "subtitle2": "Panel",
+    "subtitle3": "Search",
+    "subtitle4": "Notification",
+    "subtitle5": "Node graph",
+    "subtitle6": "Import",
+    "subtitle7": "User",
+    "subtitle8": "Log-out"
+    
+  },
+  "PathnamesPage": {
+    "title": "Pathnames",
+    "description": "The pathnames are internationalized too.If you're using the default language English, you'll see <code>/en/pathnames</code> in the browser address bar on this page.</p><p>If you change the locale to German, the URL is localized accordingly"
+  },
+  "Error": {
+    "title": "Something went wrong!",
+    "description": "<p>We've unfortunately encountered an error.</p><p>You can try to <retry>reload the page</retry> you were visiting.</p>"
+  },
+  "Index": {
+    "title": "Hei maailma!!",
+    "subtitle": "Kuis menee?",
+    "alertMessage": "Jotaki meni ny pielee!"
+  },
+  "NotFoundPage": {
+    "title": "Page not found",
+    "description": "Please double-check the browser address bar or use the navigation to go to a known page."
+  },
+  "LocaleLayout": {
+    "title": "Breitfuss",
+    "alertMessage": "Jotaki meni ny pielee!"
+  },
+  "LocaleSwitcher": {
+    "label": "Change language",
+    "locale": "{locale, select, de {German} en {English} other {Unknown}}"
+  },
+  "Login": {
+    "title": "Login to take charge. Unleash BMT Data Hub.",
+    "button": "Sign In",
+    "footer": "Made with love at"
+  },
+  "User-admin": {
+    "title": "User Management",
+    "footer": ""
+  },
+  "Data-admin": {
+    "title": "Access User Permission",
+    "footer": ""
+  },
+  "Navigation": {
+    "home": "Home",
+    "pathnames": "Pathnames"
+  }
+
+}
