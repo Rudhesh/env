@@ -12,13 +12,13 @@ declare module "next-auth" {
     email: string;
     apiToken: string;
     refreshToken: RefreshToken;
-    roles: string[];
-    userId: string;
+    role: string;
+    _id: string;
     tokenExpiresAt: string;
     isLockedOut: boolean;
     isNotAllowed: boolean;
     requiresTwoFactor: boolean;
-    
+    realname:string;
   }
 
   interface RefreshToken {

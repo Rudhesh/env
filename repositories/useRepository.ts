@@ -18,22 +18,22 @@ export const useUsersWithPermissionRepository = () => {
 
 export const useDataElementsRepository = () => {
 
-  const apiUrl = 'http://localhost:44367/api/DataElement/getall'; 
+  const apiUrl = 'http://localhost:3030/api/treenodes'; 
 
   return useGenericRepository<TreeNode>(apiUrl);
 };
 
 export const useDeleteUserRepository = () => {
 
-  const apiUrl = `http://localhost:44367/api/identity/deleteuser`; 
+  const apiUrl = `http://localhost:3000/api/register?id=`; 
 
-  return useGenericRepository<User>(apiUrl);
+  return useGenericRepository<any>(apiUrl);
 };
 
 
 export const useCreateUserRepository = () => {
 
-  const apiUrl = `http://localhost:44367/api/identity/createuser`; 
+  const apiUrl = `http://localhost:3000/api/register`; 
 
   return useGenericRepository<User>(apiUrl);
 };

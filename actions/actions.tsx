@@ -5,29 +5,34 @@ import base64 from "base-64";
 import axios from "axios";
 import { decryptString } from "@/services/cryptoService";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/authOptions";
 import { sendMail } from "@/lib/mail";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { CloudCog } from "lucide-react";
+import { Alert } from "@mui/material";
 
 
 
 export const addData = async (e: FormData) => {
 
+  const realname = e.get("realname")?.toString();
   const email = e.get("email")?.toString();
-  const roles = e.getAll("roles")?.map(role => role.toString()); // Use getAll to get all values for the key "roles"
+  const role = e.get("role")?.toString(); // Use getAll to get all values for the key "roles"
   const password = e.get("password")?.toString();
 
-  if (!email || !password || !roles) return;
+  if (!realname||!email || !password || !role) return;
   const encodedPassword = base64.encode(password);
 
   const newData: any = {
+    realname,
     email,
-    roles,
+    role,
     password: encodedPassword,
   };
+console.log({newData})
   const userRepository = useCreateUserRepository();
-
   try {
    const data =  await userRepository.create(newData);
+   console.log({data})
     console.log('User created successfully');
 return data
   } catch (error: unknown) {
@@ -45,6 +50,11 @@ return data
 
 }
 
+export const getUsers = async () => {
+  const res = await fetch("http://localhost:3000/api/register");
+  const data = await res.json();
+  return data.users;
+};
 
 export const getRoles = async () => {
   try {
@@ -86,14 +96,12 @@ export const setUserRoles = async (userId: string, roles: any) => {
     const data = {
       [userId]: roles,
     };
-console.log('setUserRoles', roles)
     const response = await axios.put(`http://localhost:44367/api/Identity/setuserroles`,data, {
       headers: {
         Authorization: `Bearer ${decrypted}`,
       },
     });
     // Handle response, possibly redirect to login page
-    console.log(response.data)
     return response.data
   } catch (error: unknown) {
     if (error instanceof Error) {
@@ -130,7 +138,6 @@ console.log("removeRoles" ,roles)
     });
 
     // Handle response, possibly redirect to login page
-    console.log(response.data);
     return response.data;
   } catch (error: unknown) {
     if (error instanceof Error) {
@@ -168,7 +175,7 @@ console.log("removeRoles" ,roles)
 //   revalidateTag("data");
 // }
 
-export const handleDelete = async (userId: number) => {
+export const handleDelete = async (userId: any) => {
   const userRepository = useDeleteUserRepository();
   try {
     await userRepository.remove(userId);
@@ -186,6 +193,21 @@ export const handleDelete = async (userId: number) => {
     };
   }
 };
+
+// export const handleDelete = async (userId: any) => {
+//   const confirmed = "";
+// console.log({userId})
+   
+//       const res = await fetch(`http://localhost:3000/api/register?id=${userId}`, {
+//         method: "DELETE",
+//       });
+
+//       if (res.ok) {
+//        console.log("done")
+//       }
+    
+// };
+
 
 
 
@@ -253,7 +275,6 @@ export const confirmEmail = async (userId: string, code :string , newEmail: stri
 
     const decrypted = decryptString(session?.user?.apiToken as string);
 
-console.log(decrypted)
     const response = await axios.post(`http://localhost:44367/api/Identity/confirmemail`, {
       userId,
        code

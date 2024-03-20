@@ -114,7 +114,7 @@ const Sidebar = () => {
               <div className="text-sm">
                 {session.user?.email}
               </div>
-              <div className="text-xs mx-5 w-20 text-center" >{roles.join(' / ')}</div>
+              <div className="text-xs mx-5 w-20 text-center" >{session.user?.role}</div>
 
             </>
           )}
@@ -122,7 +122,7 @@ const Sidebar = () => {
         {
           locale === 'en' ? (menuItems.map((menu, index) => (
             <div key={index}>
-              {session?.user?.roles.includes('User') || session?.user?.roles.includes('DataAdmin') ? (
+              {session?.user?.role.includes('User') || session?.user?.role.includes('DataAdmin') ? (
                 menu.heading !== "CONFIGURATION" && (
                   <div
                     className={`ml-7 text-sm ${index === 0 ? "" : "mt-10"}`}
@@ -140,10 +140,10 @@ const Sidebar = () => {
                   .filter((item) => {
                     // Filter out items based on user's role
                     if (session) {
-                      if (session?.user?.roles.includes('UserAdmin') || session?.user?.roles.includes('SuperAdmin')) {
+                      if (session?.user?.role.includes('admin') || session?.user?.role.includes('SuperAdmin')) {
                         // Include all items for UserAdmin role in German locale
                         return true;
-                       } else if (session?.user?.roles.includes('User') || session?.user?.roles.includes('DataAdmin')) {
+                       } else if (session?.user?.role.includes('User') || session?.user?.role.includes('DataAdmin')) {
                         // Exclude items based on user's role
                         return (
                           item.path !== "/datapartition" &&
@@ -173,7 +173,7 @@ const Sidebar = () => {
             </div>
           ))) : (menuItemsDe.map((menu, index) => (
             <div key={index}>
-              {session?.user?.roles[0] === "User" ? (
+              {session?.user?.roles === "User" ? (
                 menu.heading !== "AUFBAU" && (
                   <div
                     className={`ml-7 text-sm ${index === 0 ? "" : "mt-10"}`}
@@ -191,10 +191,10 @@ const Sidebar = () => {
                   .filter((item) => {
                     // Filter out items based on user's role
                     if (session) {
-                      if (session?.user?.roles.includes('UserAdmin') || session?.user?.roles.includes('SuperAdmin')) {
+                      if (session?.user?.role.includes('UserAdmin') || session?.user?.role.includes('SuperAdmin')) {
                         // Include all items for UserAdmin role in German locale
                         return true;
-                       } else if (session?.user?.roles.includes('User') || session?.user?.roles.includes('DataAdmin')) {
+                       } else if (session?.user?.role.includes('User') || session?.user?.role.includes('DataAdmin')) {
                         // Exclude items based on user's role
                         return (
                           item.path !== "/datapartition" &&

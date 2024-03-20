@@ -16,13 +16,10 @@ export const useGenericRepository = <T extends string | Record<string, any> | un
 
   const makeRequest = async (url: string, options?: RequestOptions): Promise<Response> => {
     const session = await getServerSession(authOptions);
-  
-
-    const decrypted = decryptString(session?.user?.apiToken as string);
 
 
     const defaultHeaders = {
-      Authorization: `Bearer ${decrypted}`,
+     
       'Content-Type': 'application/json',
     };
 
@@ -134,8 +131,10 @@ export const useGenericRepository = <T extends string | Record<string, any> | un
 
 
   const remove = async (id: number, options?: RequestOptions): Promise<void> => {
+   
+   console.log(`${apiUrl}/${id}`)
     try {
-      const response = await makeRequest(`${apiUrl}/${id}`, {
+      const response = await makeRequest(`${apiUrl}${id}`, {
         ...options,
         method: 'DELETE',
       });

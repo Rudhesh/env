@@ -3,7 +3,6 @@ import { getServerSession } from "next-auth";
 import React from "react";
 import Layout from "../../../components/layout";
 import ResetPasswordRequest from "@/components/userManagement/resetPasswordRequest";
-import { authOptions } from "@/app/api/auth/[...nextauth]/authOptions";
 import {
   Table,
   TableBody,
@@ -11,6 +10,7 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import ChangeEmail from "@/components/userManagement/changeEmail";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 export default async function User() {
   const session = await getServerSession(authOptions)
     return (
@@ -34,7 +34,7 @@ export default async function User() {
                 <span className="font-bold">User ID:</span>
               </TableCell>
               <TableCell >
-                {session?.user.userId}
+                {session?.user._id}
               </TableCell>
             </TableRow>
             <TableRow>
@@ -50,7 +50,7 @@ export default async function User() {
                 <span className="font-bold">Roles:</span>
               </TableCell>
               <TableCell>
-                {session?.user.roles.join(", ")}
+                {session?.user.role}
               </TableCell>
             </TableRow>
           </TableBody>

@@ -4,19 +4,19 @@ import { Bell } from 'lucide-react';
 import Image from "next/image";
 import { Button } from './button';
 import { getServerSession } from 'next-auth';
-import { authOptions } from '@/app/api/auth/[...nextauth]/authOptions';
 import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
 import { Sheet, SheetContent, SheetTrigger } from "./sheet"
 import Sidebar from './sidebar'
 import Navigation from './langNavBar/Navigation';
+import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 
 const NavBar = async () => {
   const session = await getServerSession(authOptions);
+  console.log(session?.user.role)
     // const { resolvedTheme } = useTheme();
     // const logoSrc = resolvedTheme !== 'dark' ? '/logo-breitfuss(1).png' : '/logo-breitfuss(1).png';
     const t = await getTranslations('Navbar');
-   
 
     return (
       <div className="fixed w-full  bg-slate-100 dark:bg-slate-800 shadow-md dark:shadow-md z-20">
@@ -46,15 +46,15 @@ const NavBar = async () => {
           </div>
 
           <div className="flex text-sm space-x-6">
-          {(session?.user?.roles.includes("SuperAdmin") ||
-              session?.user?.roles.includes("UserAdmin")) && (
+          {(session ||
+              session) && (
               <div className="cursor-pointer flex items-center justify-center rounded p-2 transition-colors hover:bg-slate-200 dark:hover:bg-slate-700">
                 <Link href="/userAdmin">{t("title1")}</Link>
               </div>
             )}
 
-            {(session?.user?.roles.includes("SuperAdmin") ||
-              session?.user?.roles.includes("DataAdmin")) && (
+            {(
+              session?.user.role.includes("admin")) && (
               <div className="cursor-pointer flex items-center justify-center rounded p-2 transition-colors hover:bg-slate-200 dark:hover:bg-slate-700">
                 <Link href="/dataAdmin">{t("title2")}</Link>
               </div>

@@ -21,8 +21,14 @@ import UserRoles from "@/components/userManagement/editRoles";
 
 export const columns: ColumnDef<User>[] = [
   {
-    accessorKey: "userId",
+    accessorKey: "_id",
     header: "userId",
+
+
+  },
+  {
+    accessorKey: "realname",
+    header: "Name",
 
 
   },
@@ -43,7 +49,7 @@ export const columns: ColumnDef<User>[] = [
    
   },
   {
-    accessorKey: "roles",
+    accessorKey: "role",
     header: "Role",
 
 
