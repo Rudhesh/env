@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import treeDataReducer from '../features/data/dataSlice';
+import filterDataReducer from '../features/data/filterDataSlice';
 import uiReducer from '../features/iu/uiSlice'; // The new slice you created
 import searchReducer from '../features/iu/searchSlice';
 import selectedNodeReducer from '../features/iu/selectedNodeSlice';
@@ -11,7 +12,8 @@ const store = configureStore({
     treeData: treeDataReducer,
     ui: uiReducer,
     search: searchReducer,
-    selectedNode: selectedNodeReducer
+    selectedNode: selectedNodeReducer,
+    filterData: filterDataReducer
   },
 });
 

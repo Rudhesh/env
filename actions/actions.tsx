@@ -20,13 +20,12 @@ export const addData = async (e: FormData) => {
   const password = e.get("password")?.toString();
 
   if (!realname||!email || !password || !role) return;
-  const encodedPassword = base64.encode(password);
 
   const newData: any = {
     realname,
     email,
     role,
-    password: encodedPassword,
+    password,
   };
 console.log({newData})
   const userRepository = useCreateUserRepository();

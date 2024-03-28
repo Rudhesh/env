@@ -51,7 +51,7 @@ const Login = ({ title,button, footer }:props) => {
     e.preventDefault();
     const email = e.target[0].value;
     const password = e.target[1].value;
-
+console.log(email, password)
     if (!isValidEmail(email)) {
       setError("Email is invalid");
       return;
@@ -100,7 +100,7 @@ const Login = ({ title,button, footer }:props) => {
             <div className=" border bg-slate-50 shadow-xl flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 rounded">
               <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                 <div className="flex justify-center ">
-                  
+              
                   <h1  className="mt-2 text-center text-xl font-bold  mb-2  leading-9 tracking-tight  text-gray-900">BMT DATA HUB</h1>
                 </div>
                
@@ -112,13 +112,13 @@ const Login = ({ title,button, footer }:props) => {
                 <input
                   type="text"
                   className={inputStyles}
-                  placeholder="Email"
+                  placeholder="rd@rd.com"
                   required
                 />
                 <input
                   type="password"
                   className="w-full border border-gray-300 dark:text-white text-black rounded px-2 py-2 mb-4 focus:outline-none focus:border-blue-400 focus:text-black"
-                  placeholder="Password"
+                  placeholder="123456789"
                   required
                 />
                 <button
@@ -148,7 +148,7 @@ const Login = ({ title,button, footer }:props) => {
                   href="#"
                   className="font-semibold leading-6 text-red-600 hover:text-[#303f57]"
                 >
-                  Breitfuss
+                  Ecotech
                 </a>
               </p>
             </div>

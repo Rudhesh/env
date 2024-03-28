@@ -1,6 +1,7 @@
 import { getServerSession } from "next-auth";
 import Layout from "../../../components/layout"
 import axios from "axios";
+import DataPartitionFlow from "./dataPartition";
 
 export default async function DataPartion() {
     const session = await getServerSession();
@@ -23,7 +24,7 @@ const getUserss = (
         <Layout>
             { session &&
             <h1>Data-Partion</h1>}
-          
+          <DataPartitionFlow/>
       </Layout>
     )
 }

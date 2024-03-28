@@ -1,5 +1,6 @@
 import { useDataElementsRepository, useUsersRepository } from "../../../../repositories/useRepository";
 import Layout from "../../../components/layout";
+import Dashboard from "../dashboard/dashboard";
 
 export default function Import() {
  
@@ -17,6 +18,7 @@ export default function Import() {
     <Layout>
       <h1>Import</h1>
       <div>{JSON.stringify(data)}</div>
+      <Dashboard/>
     </Layout>
   );
 }

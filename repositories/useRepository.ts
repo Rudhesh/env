@@ -12,13 +12,14 @@ export const useUsersRepository = () => {
 
 export const useUsersWithPermissionRepository = () => {
 
-  const apiUrl = 'http://localhost:44367/api/identity/getuserswithpermissions';
+  const apiUrl = 'http://localhost:3000/api/register';
   return useGenericRepository<UserWithPermission>(apiUrl);
 };
 
 export const useDataElementsRepository = () => {
 
-  const apiUrl = 'http://localhost:3030/api/treenodes'; 
+  // const apiUrl = 'http://localhost:3030/api/treenodes'; 
+  const apiUrl = 'http://localhost:3000/api/datatree'; 
 
   return useGenericRepository<TreeNode>(apiUrl);
 };

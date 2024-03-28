@@ -1,12 +1,28 @@
+import Layout from "@/components/layout";
+import { columns } from "./columns";
+import EditPanel from "./editPanel";
 
-import { ResizableDemo } from "@/components/ResizableDemo"
-import Layout from "../../../components/layout"
+interface DataPoint {
+  id: number;
+  value: number;
+  time_stamp: string;
+  min: number;
+  max: string;
+  status: string;
+  // Add other properties from your JSON data if needed
+}
+async function getUsers(): Promise<any> {
+  const res = await fetch("http://localhost:3000/api/dataPartition");
+  const data = await res.json();
+  console.log("daTA",data)
+    return data;
+}
 
-export default function Panel() {
-    
-    return (
-        <Layout>
-        <ResizableDemo/>
-     </Layout>
-    )
+export default async function Panel() {
+  const data = await getUsers();
+  return (
+    <Layout>
+      <EditPanel data={data} />
+    </Layout>
+  );
 }

@@ -8,7 +8,7 @@ import {  UserWithPermission } from "@/types/userPermission";
 
 export const columns: ColumnDef<UserWithPermission>[] = [
   {
-    accessorKey: "userId",
+    accessorKey: "_id",
     header: "User Id",
 
 

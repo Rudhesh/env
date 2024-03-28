@@ -4,8 +4,8 @@ import { userPermission } from "../../../../actions/actions";
 import { columns } from "./columns";
 import { getTranslations } from "next-intl/server";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/authOptions";
 import { redirect } from "next/navigation";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 export default async function DataAdmin() {
 
@@ -15,8 +15,8 @@ export default async function DataAdmin() {
     const data =  await userPermission();
 
     const session = await getServerSession(authOptions)
-
-    if (!session || !session.user || !session.user.roles.includes('DataAdmin')) {
+console.log("dataAdmin",session?.user)
+    if (!session || !session.user || !session.user.role.includes('DataAdmin')) {
       // Redirect to login or show unauthorized message
       
       redirect("/");

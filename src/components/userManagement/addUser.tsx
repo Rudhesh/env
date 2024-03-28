@@ -17,14 +17,7 @@ import {
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 import { useToast } from "@/components/ui/use-toast";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-  FormControl,
-} from "@/components/ui/select";
+
 
 interface FormData {
   realname: string;
@@ -129,7 +122,7 @@ const AddUser = () => {
                   value={formData.email}
                   onChange={handleInputChange}
                   required
-                />
+                />  
                 {/* <Label htmlFor="role" className="text-right">
                   Roles
                 </Label>
@@ -156,6 +149,7 @@ const AddUser = () => {
                     <option value="admin">Admin</option>
                     <option value="user">User</option>
                     <option value="superAdmin">Super Admin</option>
+                    <option value="DataAdmin">Data Admin</option>
                   </select>
        
 

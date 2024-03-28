@@ -25,7 +25,7 @@ const TreeViewSearch: React.FC = () => {
   const [selectedKey, setSelectedKey] = useState<string | null>("name");
   const data = useAppSelector((state) => state.treeData);
   const dispatch = useAppDispatch();
-
+  console.log(data)
   useEffect(() => {
   
     dispatch(fetchDataElements());
