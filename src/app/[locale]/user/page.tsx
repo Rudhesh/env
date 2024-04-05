@@ -2,14 +2,12 @@
 import { getServerSession } from "next-auth";
 import React from "react";
 import Layout from "../../../components/layout";
-import ResetPasswordRequest from "@/components/userManagement/resetPasswordRequest";
 import {
   Table,
   TableBody,
   TableCell,
   TableRow,
 } from "@/components/ui/table"
-import ChangeEmail from "@/components/userManagement/changeEmail";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 export default async function User() {
   const session = await getServerSession(authOptions)
@@ -21,8 +19,6 @@ export default async function User() {
         <div className="mb-8 flex justify-between items-center ">
           <h1 className="text-4xl font-bold"> User Info</h1>
           <div className="flex space-x-2">
-         <div className="border"> <ResetPasswordRequest/></div>
-          <div className="border"><ChangeEmail/></div>
           
           </div>
         </div>
