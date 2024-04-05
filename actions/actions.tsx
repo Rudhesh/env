@@ -1,6 +1,6 @@
 "use server"
 import { revalidatePath, revalidateTag } from "next/cache";
-import { useCreateUserRepository, useDataElementsRepository, useDeleteUserRepository, useChangeEmailRepository, useUsersRepository, useUsersWithPermissionRepository, useResetPasswordRepository } from "../repositories/useRepository";
+import { useCreateUserRepository, useDataElementsRepository, useDeleteUserRepository, useUsersRepository, useUsersWithPermissionRepository } from "../repositories/useRepository";
 import base64 from "base-64";
 import axios from "axios";
 
@@ -71,9 +71,13 @@ export const DatabaseConnectionForm = async (e: FormData) => {
 
 
 export const getUsers = async () => {
-  const res = await fetch("http://localhost:3000/api/register");
+
+
+  const apiUrl = process.env.NEXTAUTH_URL
+  const res = await fetch(`${apiUrl}/api/register`);
   const data = await res.json();
   return data.users;
+  
 };
 
 
@@ -151,9 +155,7 @@ export const changeEmail = async (userId: any, newEmail: any, code: string) => {
     newEmail,
     code,
   };
-const changeEmail = useChangeEmailRepository()
-const data = await changeEmail.create(newData);
-return data
+
 
 };
 

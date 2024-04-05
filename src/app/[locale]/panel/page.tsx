@@ -12,7 +12,8 @@ interface DataPoint {
   // Add other properties from your JSON data if needed
 }
 async function getUsers(): Promise<any> {
-  const res = await fetch("http://localhost:3000/api/dataPartition");
+  const apiUrl = process.env.NEXTAUTH_URL
+  const res = await fetch(`${apiUrl}/api/dataPartition`);
   const data = await res.json();
   console.log("daTA",data)
     return data;
