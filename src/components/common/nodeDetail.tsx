@@ -11,7 +11,7 @@ import MapComponent from './mapComponent';
 const NodeDetail: React.FC<{ node: TreeNode; path: string[]; childNodeCount: any; }> = ({ node,path, childNodeCount }) => {
   
 
- 
+ console.log({path})
 
   const attributeCount = node.dataElementAttributes.length
   const long = node.dataElementAttributes.map((attribute, index) => 

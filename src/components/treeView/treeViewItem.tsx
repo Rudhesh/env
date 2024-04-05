@@ -30,7 +30,7 @@ const TreeViewItem: React.FC<{
       return path;
     }
 
-    const currentNode = data.dataElements.find((item: { dataElementId: string; }) => item.dataElementId === nodeId);
+    const currentNode = data.dataElements.find((item: { dataElementId: string; }) => item.dataElementId == nodeId);
     if (!currentNode) return path;
 
     path.unshift(currentNode.name);
@@ -49,7 +49,7 @@ const TreeViewItem: React.FC<{
       return 0;
     }
     const childNodes = data.dataElements.filter(
-      (item: { groupId: string; }) => item.groupId === node.dataElementId
+      (item: { groupId: string; }) => item.groupId == node.dataElementId
     );
     return childNodes;
   };
@@ -85,7 +85,7 @@ const TreeViewItem: React.FC<{
           {isExpanded && !node.dataPartitions && (
             <div className='ml-5'>
               {data.dataElements
-                .filter((childNode: { groupId: string; }) => childNode.groupId === node.dataElementId)
+                .filter((childNode: { groupId: string; }) => childNode.groupId == node.dataElementId)
                 .map((childNode: TreeNode) => (
                   <TreeViewItem
                     key={childNode.dataElementId}

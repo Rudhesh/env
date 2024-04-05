@@ -1,6 +1,6 @@
 {
   "IndexPage": {
-    "title": "Breitfuss",
+    "title": "Dashboard",
     "description": "This is a basic example that demonstrates the usage of <code>next-intl</code> with the Next.js App Router. Try changing the locale in the top right corner and see how the content changes."
   },
   "Navbar": {
@@ -42,7 +42,7 @@
     "description": "Please double-check the browser address bar or use the navigation to go to a known page."
   },
   "LocaleLayout": {
-    "title": "Breitfuss",
+    "title": "Envotech",
     "alertMessage": "Jotaki meni ny pielee!"
   },
   "LocaleSwitcher": {

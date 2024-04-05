@@ -201,7 +201,7 @@ const TreeViewNav: React.FC = () => {
       return path;
     }
 
-    const currentNode = treeData.dataElements.find((item) => item.dataElementId === nodeId);
+    const currentNode = treeData.dataElements.find((item) => item.dataElementId == nodeId);
     if (!currentNode) return path;
 
     path.unshift(currentNode.name);

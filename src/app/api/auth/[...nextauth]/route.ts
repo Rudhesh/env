@@ -4,6 +4,7 @@ import User from "@/models/User";
 import connect from "@/utils/db";
 import bcrypt from "bcryptjs";
 import { AuthOptions } from "next-auth";
+import GithubProvider from "next-auth/providers/github";
 
 
 
@@ -23,17 +24,12 @@ export const authOptions: AuthOptions = {  session: {
         connect();
 
         const { email, password } = credentials;
-console.log( email, password)
         const user = await User.findOne({ email }).select("+password");
-        console.log({user})
 
         if (!user) {
           throw new Error("Invalid Email or Password");
         }
         const isPasswordMatched = await bcrypt.compare(password, user.password);
-        console.log({password})
-        console.log(user.password)
-        console.log({isPasswordMatched})
 
         if (!isPasswordMatched) {
           throw Error("Invalid Email or Password");
@@ -41,6 +37,10 @@ console.log( email, password)
 
         return user;
       },
+    }),
+    GithubProvider({
+      clientId: process.env.GITHUB_ID ?? "",
+      clientSecret: process.env.GITHUB_SECRET ?? "",
     }),
   ],
   callbacks: {
@@ -50,11 +50,8 @@ console.log( email, password)
     },
     session: async ({ session, token }) => {
       console.log(session.user)
-      session.user = token.user;
+      session.user = token.user as any;
       console.log(token.user)
-
-      // delete password from session
-    //   delete session?.user?.password;
       return session;
     },
   },

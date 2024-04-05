@@ -5,7 +5,7 @@ const port = 3030;
 // Define your treeNodes array here (make sure to convert TypeScript to valid JavaScript, if necessary)
 const treeNodes = [
     {
-        dataElementId: "1",
+        dataElementId: 1,
         name: "Node1",
         externalId: "7657",
         groupId: null,
@@ -17,7 +17,7 @@ const treeNodes = [
         showAttributes: true,
     },
     {
-        dataElementId: "2",
+        dataElementId: 2,
         name: "Branch1-1",
         externalId: "7658",
         groupId: "1",
@@ -29,7 +29,7 @@ const treeNodes = [
         showAttributes: false,
     },
     {
-        dataElementId: "3",
+        dataElementId: 3,
         name: "Branch1-2",
         externalId: "7659",
         groupId: "1",
@@ -41,7 +41,7 @@ const treeNodes = [
         showAttributes: true,
     },
     {
-        dataElementId: "4",
+        dataElementId: 4,
         name: "Node2",
         externalId: "7660",
         groupId: "2",

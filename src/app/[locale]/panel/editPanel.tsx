@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from "react";
 import { columns } from "./columns";
 import { Button } from "@/components/ui/button";
-
 import {
   ResizableHandle,
   ResizablePanel,
@@ -29,12 +28,12 @@ interface DataPoint {
 
 interface GraphProps {
   data: DataPoint[];
+  name?: string;
 }
 
-const EditPanel: React.FC<GraphProps> = ({ data }) => {
+const EditPanel: React.FC<GraphProps> = ({ data, name }) => {
 console.log({data})
   const [originalData, setOriginalData] = useState<DataPoint[]>([]); // Original data from the server
-  // const [filteredData, setFilteredData] = useState<DataPoint[]>([]);
   
   const filterData= useAppSelector((state) => state.filterData);
   const dispatch = useAppDispatch();
@@ -68,16 +67,29 @@ console.log({savedPanel})
     }
   }, []);
 
-  const handleSavePanel = () => {
-    // Combine the panel configuration with the name
-    const savedPanel = {
-      name: panelName,
-      data: filterData, // Or any other data you want to save
-    };
+  const generateUniqueId = () => `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
 
-    // Save to localStorage
-    localStorage.setItem("savedPanel", JSON.stringify(savedPanel));
+
+  const handleSavePanel = () => {
+    const uniqueId = generateUniqueId(); // Generate a unique ID for the new panel
+    const newPanel = {
+      id: uniqueId,
+      name: panelName,
+      data: filterData,
+    };
+  
+    // Retrieve existing panels
+    const savedPanels = JSON.parse(localStorage.getItem("savedPanels") || "{}");
+    
+    // Add the new panel
+    savedPanels[uniqueId] = newPanel;
+  
+    // Save the updated panels back to localStorage
+    localStorage.setItem("savedPanels", JSON.stringify(savedPanels));
   };
+  
+
+
   const handleClearSavedPanel = () => {
     // Clear the saved panel from localStorage
     localStorage.removeItem("savedPanel");
@@ -108,7 +120,7 @@ console.log({savedPanel})
     console.log({filtered});
     dispatch(setFilteredData(filtered));
   };
-  console.log({ filterData });
+  console.log(filterData.filteredData);
   return (
     
     <div className="dark:text-white flex">
@@ -120,10 +132,18 @@ console.log({savedPanel})
                 <Input
                   type="text"
                   placeholder="Enter Panel Name"
-                  value={panelName}
+                  value={ panelName}
                   onChange={(e) => setPanelName(e.target.value)}
                   style={{ width: '300px' }} // Inline style for width
                 />
+
+{name ?<Input
+                  type="text"
+                  placeholder="Enter Panel Name"
+                  value={name}
+                  onChange={(e) => setPanelName(e.target.value)}
+                  style={{ width: '300px' }} // Inline style for width
+                />: null}
                 
                 <div className="flex">
                   {" "}

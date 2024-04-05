@@ -7,11 +7,10 @@ import Loader from "../../../components/common/loader";
 import Image from "next/image";
 
 type props = {
-  title :string
-  button: string
-  footer :string
-}
-
+  title: string;
+  button: string;
+  footer: string;
+};
 
 const inputStyles = `
   w-full 
@@ -28,9 +27,7 @@ const inputStyles = `
   focus:text-black
 `;
 
-const Login = ({ title,button, footer }:props) => {
-
-
+const Login = ({ title, button, footer }: props) => {
   const router = useRouter();
   const [error, setError] = useState("");
   const locale = useLocale();
@@ -51,7 +48,7 @@ const Login = ({ title,button, footer }:props) => {
     e.preventDefault();
     const email = e.target[0].value;
     const password = e.target[1].value;
-console.log(email, password)
+    console.log(email, password);
     if (!isValidEmail(email)) {
       setError("Email is invalid");
       return;
@@ -67,7 +64,7 @@ console.log(email, password)
       email,
       password,
     });
-    
+
     if (res?.error) {
       setError("Invalid email or password");
       if (res?.url) router.replace("/dashboard");
@@ -77,7 +74,7 @@ console.log(email, password)
   };
 
   if (sessionStatus === "loading") {
-    return  <Loader />;
+    return <Loader />;
   }
 
   const handleResetPassword = () => {
@@ -88,24 +85,25 @@ console.log(email, password)
   return (
     sessionStatus !== "authenticated" && (
       <div className="flex flex-col h-screen">
-         <Image
-                className="p-2 mx-5"
-                src={"/logo-breitfuss(1).png"}
-                height={125}
-                width={125}
-                alt="Breitfuss Logo"
-              />
+        <Image
+          className="p-2 mx-5"
+          src={"/logo-Envotech(1).png"}
+          height={125}
+          width={125}
+          alt="Envotech Logo"
+        />
         <div className=" flex justify-center mt-20  ">
-        <div className="w-[450px]">
+          <div className="w-[450px]">
             <div className=" border bg-slate-50 shadow-xl flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 rounded">
               <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                 <div className="flex justify-center ">
-              
-                  <h1  className="mt-2 text-center text-xl font-bold  mb-2  leading-9 tracking-tight  text-gray-900">BMT DATA HUB</h1>
+                  <h1 className="mt-2 text-center text-xl font-bold  mb-2  leading-9 tracking-tight  text-gray-900">
+                    BMT DATA HUB
+                  </h1>
                 </div>
-               
+
                 <h2 className="mt-2 text-center text-xl  mb-10  leading-9 tracking-tight text-gray-900">
-                {title}
+                  {title}
                 </h2>
               </div>
               <form onSubmit={handleSubmit}>
@@ -132,15 +130,19 @@ console.log(email, password)
                   {error && error}
                 </p>
               </form>
-            
+
               <div className="mt-4 text-center">
-          <button
-            className="text-sm text-[#384D6C] hover:underline focus:outline-none focus:underline"
-            onClick={handleResetPassword}
-          >
-            Forgot Password?
-          </button>
-        </div>
+                <button
+                  className="text-sm text-[#384D6C] hover:underline focus:outline-none focus:underline"
+                  onClick={handleResetPassword}
+                >
+                  Forgot Password?
+                </button>
+                {/*  <>
+      Not signed in <br />
+      <button onClick={() => signIn()}>Sign in</button>
+    </> */}
+              </div>
 
               <p className="mt-10 text-center text-sm text-gray-500">
                 {footer}{" "}
@@ -154,7 +156,6 @@ console.log(email, password)
             </div>
           </div>
         </div>
-        
       </div>
     )
   );
