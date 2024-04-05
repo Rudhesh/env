@@ -1,6 +1,5 @@
 'use client'
 import { useEffect, useState } from 'react';
-import { getRoles, removeRoles, setUserRoles, userData } from '../../../actions/actions';
 import {
   Dialog,
   DialogContent,
@@ -35,65 +34,65 @@ console.log({user})
 
   }, []);
 
-  const fetchRoles = async () => {
-    try {
-      const rolesData = await getRoles();
-      setRoles(rolesData);
-      const data = await userData();
-      setData(data)
-    } catch (error) {
-      console.error('Error fetching roles:', error);
-    }
-  };
+  // const fetchRoles = async () => {
+  //   try {
+  //     const rolesData = await getRoles();
+  //     setRoles(rolesData);
+  //     const data = await userData();
+  //     setData(data)
+  //   } catch (error) {
+  //     console.error('Error fetching roles:', error);
+  //   }
+  // };
 
-  const handleRoleCheckboxChange = async (role: Role) => {
-    try {
-      // Check if the role is already selected
-      const isRoleSelected = selectedRoles.includes(role.name);
+  // const handleRoleCheckboxChange = async (role: Role) => {
+  //   try {
+  //     // Check if the role is already selected
+  //     const isRoleSelected = selectedRoles.includes(role.name);
 
-      // Toggle the selection of roles when the checkbox is clicked
-      const updatedRoles = isRoleSelected
-        ? selectedRoles.filter((selectedRole) => selectedRole !== role.name)
-        : [role.name];
+  //     // Toggle the selection of roles when the checkbox is clicked
+  //     const updatedRoles = isRoleSelected
+  //       ? selectedRoles.filter((selectedRole) => selectedRole !== role.name)
+  //       : [role.name];
 
-      // Use await here to make sure setUserRoles completes before moving forward
-      await setUserRoles(userId, updatedRoles);
+  //     // Use await here to make sure setUserRoles completes before moving forward
+  //     await setUserRoles(userId, updatedRoles);
 
-      // If the role was already selected, remove it using removeRoles
-      if (isRoleSelected) {
-        await removeRoles(userId, [role.name]);
-      }
+  //     // If the role was already selected, remove it using removeRoles
+  //     if (isRoleSelected) {
+  //       await removeRoles(userId, [role.name]);
+  //     }
 
-      // Refetch roles after modification
-      fetchRoles();
+  //     // Refetch roles after modification
+  //     fetchRoles();
 
-      // Update state after asynchronous operations
-      setSelectedRoles(updatedRoles);
-    } catch (error) {
-      console.error('Error updating roles:', error);
-    }
-  };
+  //     // Update state after asynchronous operations
+  //     setSelectedRoles(updatedRoles);
+  //   } catch (error) {
+  //     console.error('Error updating roles:', error);
+  //   }
+  // };
 
-  async function handleUpdateRoles() {
-    try {
-      const data = await userData();
-      // Handle success scenario or display appropriate message
+  // async function handleUpdateRoles() {
+  //   try {
+  //     const data = await userData();
+  //     // Handle success scenario or display appropriate message
       
-      console.log('Email change link sent successfully:', data);
-    } catch (error) {
-      // Handle error scenario or display appropriate message
-      console.error('Error sending email change link:', error);
-    }
-  }
+  //     console.log('Email change link sent successfully:', data);
+  //   } catch (error) {
+  //     // Handle error scenario or display appropriate message
+  //     console.error('Error sending email change link:', error);
+  //   }
+  // }
 
 
 
   return (
     <div>
       <Dialog>
-        <DialogTrigger asChild>
+        {/* <DialogTrigger asChild>
           <Button size="sm" onClick={fetchRoles}>Update Roles</Button>
-        </DialogTrigger>
+        </DialogTrigger> */}
         <DialogContent className="sm:max-w-[325px]  bg-slate-100 dark:bg-slate-900">
           <DialogHeader>
             <DialogTitle>Edit Roles</DialogTitle>
@@ -112,20 +111,20 @@ console.log({user})
                 <div className="w-3/4">{role.name}</div>
                 <div className="w-1/4">
                   {/* Checkbox to select roles */}
-                  <input
+                  {/* <input
                     type="checkbox"
                     checked={data.some((userRole) => userId === userRole.userId && userRole.roles.includes(role.name))}
                     onChange={() => handleRoleCheckboxChange(role)}
-                  />
+                  /> */}
                 </div>
               </div>
             ))}
 
 
           </div>
-          <DialogFooter>
+          {/* <DialogFooter>
             <Button size='sm' variant='outline' onClick={handleUpdateRoles}>Update</Button>
-          </DialogFooter>
+          </DialogFooter> */}
 
         </DialogContent>
       </Dialog>

@@ -14,7 +14,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import ChangeEmail from "@/components/userManagement/changeEmail";
-import ResetPasswordRequest from "@/components/userManagement/resetPasswordRequest";
 import DeleteUser from "@/components/userManagement/deleteUser";
 import EditRoles from "@/components/userManagement/editRoles";
 import UserRoles from "@/components/userManagement/editRoles";
@@ -71,7 +70,7 @@ export const columns: ColumnDef<User>[] = [
   <DropdownMenuTrigger > <FileEdit className="h-5 w-5 mr-2" /></DropdownMenuTrigger>
   <DropdownMenuContent className=" bg-slate-100 dark:bg-slate-900" align="end">
     <DropdownMenuLabel><ChangeEmail user={user}/></DropdownMenuLabel>
-    <DropdownMenuLabel><ResetPasswordRequest/></DropdownMenuLabel>
+    {/* <DropdownMenuLabel><ResetPasswordRequest/></DropdownMenuLabel> */}
     <DropdownMenuLabel><UserRoles  user={user}/></DropdownMenuLabel>
    
    

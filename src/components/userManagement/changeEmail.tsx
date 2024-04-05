@@ -13,26 +13,25 @@ import {
 } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
-import { getchangeemailcode } from '../../../actions/actions';
 
 const ChangeEmail = ({ user }: any) => {
   const [newEmail, setNewEmail] = useState('');
   const { data: session, status } = useSession();
-  const userId = session?.user.userId;
+  const userId = session?.user.id;
   const currentEmail = session?.user.email;
 // const currentEmail = user.email
 // const userId = user.userId
 console.log({user})
-  async function handleUpdateEmail() {
-    try {
-      const code = await getchangeemailcode(userId, newEmail, currentEmail);
-      // Handle success scenario or display appropriate message
-      console.log('Email change link sent successfully:', code);
-    } catch (error) {
-      // Handle error scenario or display appropriate message
-      console.error('Error sending email change link:', error);
-    }
-  }
+  // async function handleUpdateEmail() {
+  //   try {
+  //     const code = await getchangeemailcode(userId, newEmail, currentEmail);
+  //     // Handle success scenario or display appropriate message
+  //     console.log('Email change link sent successfully:', code);
+  //   } catch (error) {
+  //     // Handle error scenario or display appropriate message
+  //     console.error('Error sending email change link:', error);
+  //   }
+  // }
 
   return (
     <div>
@@ -62,9 +61,9 @@ console.log({user})
             </div>
           </div>
 
-          <DialogFooter>
+          {/* <DialogFooter>
             <Button size='sm' variant='outline' onClick={handleUpdateEmail}>Update</Button>
-          </DialogFooter>
+          </DialogFooter> */}
         </DialogContent>
       </Dialog>
     </div>
