@@ -15,7 +15,7 @@ async function getUsers(): Promise<any> {
   const apiUrl = process.env.NEXTAUTH_URL
   const res = await fetch(`${apiUrl}/api/dataPartition`);
   const data = await res.json();
-  console.log("daTA",data)
+  console.log("DATA",data)
     return data;
 }
 

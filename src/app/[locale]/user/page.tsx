@@ -6,7 +6,7 @@ import {
   Table,
   TableBody,
   TableCell,
-  TableRow,
+  TableRow, 
 } from "@/components/ui/table"
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 export default async function User() {
@@ -23,7 +23,7 @@ export default async function User() {
           </div>
         </div>
         <div className=" border  sm:max-w-[825px]">
-        <Table>
+        <Table>               
           <TableBody>
             <TableRow>
               <TableCell >

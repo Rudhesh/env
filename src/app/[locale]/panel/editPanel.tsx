@@ -15,6 +15,9 @@ import Sidebar from "@/components/panel/Sidebar";
 import { Input } from "@/components/ui/input";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { setFilteredData  } from "@/features/data/filterDataSlice";
+import AreaChartGraph from "@/components/panel/AreaChartGraph";
+import LineChartGraph from "@/components/panel/LineChartGraph";
+import BarChartGraph from "@/components/panel/BarChartGraph";
 
 interface DataPoint {
   id: number;
@@ -34,7 +37,8 @@ interface GraphProps {
 const EditPanel: React.FC<GraphProps> = ({ data, name }) => {
 console.log({data})
   const [originalData, setOriginalData] = useState<DataPoint[]>([]); // Original data from the server
-  
+  const [graphType, setGraphType] = useState("AreaChart"); // State to manage graph type
+
   const filterData= useAppSelector((state) => state.filterData);
   const dispatch = useAppDispatch();
   console.log({filterData})
@@ -121,10 +125,24 @@ console.log({savedPanel})
     dispatch(setFilteredData(filtered));
   };
   console.log(filterData.filteredData);
+
+
+  const renderGraph = () => {
+    switch (graphType) {
+      case "LineChart":
+        return <LineChartGraph data={filterData.filteredData} />;
+      case "BarChart":
+        return <BarChartGraph data={filterData.filteredData} />;
+      case "AreaChart":
+      default:
+        return <AreaChartGraph data={filterData.filteredData} />;
+    }
+  };
+
   return (
     
-    <div className="dark:text-white flex">
-      <ResizablePanelGroup direction="horizontal" className="max-w-screen ">
+    <div className="dark:text-white flex h-screen">
+      <ResizablePanelGroup direction="horizontal" className="max-w-screen">
         <ResizablePanel defaultSize={80}>
           <ResizablePanelGroup direction="vertical">
            
@@ -155,16 +173,24 @@ console.log({savedPanel})
               </div>
            
           
-            <ResizablePanel defaultSize={60}>
+            <ResizablePanel defaultSize={40}>
               <div className=" p-4 m-2">
-                {" "}
-               
-                <Graph data={filterData.filteredData} />
-               
+              <div className="flex space-x-2 mb-4">
+                  <Button variant="outline" onClick={() => setGraphType("AreaChart")}>
+                    Area Chart
+                  </Button>
+                  <Button variant="outline" onClick={() => setGraphType("LineChart")}>
+                    Line Chart
+                  </Button>
+                  <Button variant="outline" onClick={() => setGraphType("BarChart")}>
+                    Bar Chart
+                  </Button>
+                </div>
+                {renderGraph()}
               </div>
             </ResizablePanel>
             <ResizableHandle withHandle />
-            <ResizablePanel defaultSize={40}>
+            <ResizablePanel defaultSize={60}>
             <div className="p-4 m-2" style={{ height: '100%', overflow: 'auto' }}>
     <DataTable columns={columns} data={filterData.filteredData} />
   </div>
@@ -173,7 +199,7 @@ console.log({savedPanel})
         </ResizablePanel>
         <ResizableHandle withHandle />
         <ResizablePanel defaultSize={20}>
-          <div className=" h-[850px] p-4 m-2 ">
+          <div className="  p-4 m-2 ">
             {" "}
             <Button variant="outline" className=" px-4 py-2 ">
               Share

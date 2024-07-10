@@ -7,7 +7,6 @@ import { redirect } from "next/navigation";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import Image from "next/image"
 import DatabaseConnectionForm from "./databaseConnectionForm";
-import { externalData } from "../../../../actions/actions";
 
 export default async function Import() {
  

@@ -18,8 +18,8 @@ export default function Home({params: {locale}}: Props) {
 
   return (
     <main >
-      <div>Hello</div>
-   {/* <Login title={t("title")} button={t("button")} footer={t("footer")}/> */}
+      
+   <Login title={t("title")} button={t("button")} footer={t("footer")}/>
     </main>
   )
 }
