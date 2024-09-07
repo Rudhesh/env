@@ -259,8 +259,8 @@ const TreeViewNav: React.FC = () => {
           childNodeCount={countChildNodes(selectedNode)}
         />
       ) : (
-        <div className="flex items-center justify-center h-screen border border-gray-300 rounded">
-          <div>"Click on a tree node for information."</div>
+        <div className="flex items-center justify-center h-screen  border border-gray-300 rounded">
+          <div>Click on a tree node for information.</div>
         </div>
       )}
     </div>

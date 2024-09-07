@@ -24,7 +24,6 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import AddUser from "@/components/userManagement/addUser";
@@ -38,11 +37,6 @@ export function DataTable<TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
-
-  if (!data) {
-    return <div>Error: Data is unavailable at the moment.</div>;
-  }
-
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
@@ -64,10 +58,13 @@ export function DataTable<TData, TValue>({
     getPaginationRowModel: getPaginationRowModel(),
   });
 
+  if (!data) {
+    return <div>Error: Data is unavailable at the moment.</div>;
+  }
+
   return (
     <>
       {/* Filters */}
-
       <div className=" flex items-center justify-between">
         <div className="flex items-center py-4">
           <Input
@@ -83,7 +80,6 @@ export function DataTable<TData, TValue>({
         </div>
         <AddUser />
         {/* Column visibility */}
-
       </div>
 
       {/* Table */}
@@ -116,10 +112,7 @@ export function DataTable<TData, TValue>({
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext()
-                      )}
+                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
                     </TableCell>
                   ))}
                 </TableRow>

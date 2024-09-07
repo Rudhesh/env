@@ -2,11 +2,11 @@ import { getServerSession } from "next-auth";
 import { useDataElementsRepository, useUsersRepository } from "../../../../repositories/useRepository";
 import Layout from "../../../components/layout";
 import Dashboard from "../dashboard/dashboard";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import Image from "next/image"
 import DatabaseConnectionForm from "./databaseConnectionForm";
+import { authOptions } from "@/app/api/auth/[...nextauth]/authOpt";
 
 export default async function Import() {
  

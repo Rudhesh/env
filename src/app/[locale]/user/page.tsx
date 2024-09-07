@@ -8,7 +8,7 @@ import {
   TableCell,
   TableRow, 
 } from "@/components/ui/table"
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/app/api/auth/[...nextauth]/authOpt";
 export default async function User() {
   const session = await getServerSession(authOptions)
     return (

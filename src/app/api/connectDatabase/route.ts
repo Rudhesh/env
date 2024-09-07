@@ -1,29 +1,24 @@
-// pages/api/connectDatabase.js
+// app/api/connectDatabase/route.ts (App Router)
+import { NextRequest, NextResponse } from 'next/server';
+import { query } from '@/utils/dbsu';
 
-import { NextApiRequest, NextApiResponse } from 'next';
-import { query } from "@/utils/dbsu";
+export async function POST(req: NextRequest) {
+  try {
+    const body = await req.json();
+    const { host, user, password, database } = body;
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method === "POST") {
-    const { host, user, password, database } = req.body;
+    const results = await query({
+      queryText: 'SELECT * FROM your_table_name LIMIT 1',
+      values: [],
+      host,
+      user,
+      password,
+      database,
+    });
 
-    try {
-      // Temporary connection for testing purposes
-      const results = await query({
-        queryText: "SELECT * FROM your_table_name LIMIT 1", // Example query
-        values: [], // Include query values if necessary
-        host,
-        user,
-        password,
-        database,
-      });
-      return res.status(200).json(results);
-    } catch (error) {
-      console.error(error);
-      return res.status(500).json({ message: "Failed to connect to the database" });
-    }
-  } else {
-    res.setHeader("Allow", ["POST"]);
-    return res.status(405).end(`Method ${req.method} Not Allowed`);
+    return NextResponse.json({ data: results });
+  } catch (error) {
+    console.error(error);
+    return NextResponse.json({ message: 'Failed to connect to the database' }, { status: 500 });
   }
 }

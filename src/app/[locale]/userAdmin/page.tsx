@@ -6,7 +6,7 @@ import { getTranslations } from "next-intl/server";
 import { getUsers, userData } from "../../../../actions/actions";
 import { getServerSession } from "next-auth";
 import { redirect } from 'next/navigation';
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/app/api/auth/[...nextauth]/authOpt";
 
 export default async function UserAdmin() {
 

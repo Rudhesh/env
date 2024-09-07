@@ -43,7 +43,7 @@ console.log({user})
           <DialogHeader>
             <DialogTitle>Change Email</DialogTitle>
             <DialogDescription>
-              Enter your new email address below, and click "Update" to send a confirmation link. After clicking "Update," check your inbox and follow the instructions in the email to confirm the changes.
+              Enter your new email address below, and click Update to send a confirmation link. After clicking Update, check your inbox and follow the instructions in the email to confirm the changes.
             </DialogDescription>
           </DialogHeader>
           <div className="grid gap-6 py-4">
