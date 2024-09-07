@@ -15,15 +15,15 @@ const NodeDetail: React.FC<{ node: TreeNode; path: string[]; childNodeCount: any
   const long = node.dataElementAttributes.map((attribute, index) => (
     <div key={`long-${index}`}>{attribute.longitude}</div>
   ));
-
+  
   const lat = node.dataElementAttributes.map((attribute, index) => (
     <div key={`lat-${index}`}>{attribute.latitude}</div>
   ));
-
+  
   const Address = node.dataElementAttributes.map((attribute, index) => (
     <div key={`address-${index}`}>{attribute.city} {attribute.street} {attribute.postalCode}</div>
   ));
-
+  
   const latitude = node.dataElementAttributes.find((attribute: { kind: string; }) => attribute.kind === "GeoCoordinate")?.latitude || 52.5200;
   const longitude = node.dataElementAttributes.find(attribute => attribute.kind === "GeoCoordinate")?.longitude || 13.4050;
   const Add = node.dataElementAttributes.find(attribute => attribute.kind === "Address")?.city || "Berlin";
@@ -33,11 +33,11 @@ const NodeDetail: React.FC<{ node: TreeNode; path: string[]; childNodeCount: any
   const groups = childNodeCount.map((group: TreeNode, index: any) => (
     !group.dataPartitions ? <span key={`group-${index}`} className="dark:text-white dark:border-white">{group.name}, </span> : null
   ));
-
+  
   const channels = childNodeCount.map((channel: TreeNode, index: any) => (
     channel.dataPartitions ? <span key={`channel-${index}`} className="dark:text-white dark:border-white">{channel.name}, </span> : null
   ));
-
+  
   const attributeRows = node.dataElementAttributes.map((attribute, index) => (
     <TableRow key={index}>
       <TableCell className="dark:text-white dark:border-white">{attribute.name}</TableCell>
