@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-
 import {
   ColumnDef,
   flexRender,
@@ -14,7 +13,6 @@ import {
   getPaginationRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-
 import {
   Table,
   TableBody,
@@ -23,11 +21,8 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-
-
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import AddUser from "@/components/userManagement/addUser";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -38,10 +33,6 @@ export function UserPermissionTable<TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
-
-  if (!data) {
-    return <div>Error: Data is unavailable at the moment.</div>;
-  }
 
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
@@ -64,30 +55,29 @@ export function UserPermissionTable<TData, TValue>({
     getPaginationRowModel: getPaginationRowModel(),
   });
 
+  if (!data) {
+    return <div>Error: Data is unavailable at the moment.</div>;
+  }
+
   return (
     <>
       {/* Filters */}
-
-      <div className=" flex items-center justify-between">
+      <div className="flex items-center justify-between">
         <div className="flex items-center py-4">
           <Input
             placeholder="Search by email..."
-            value={
-              (table.getColumn("email")?.getFilterValue() as string) ?? ""
-            }
+            value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
             onChange={(event) =>
               table.getColumn("email")?.setFilterValue(event.target.value)
             }
-            className="max-w-sm h-8  dark:bg-slate-950"
+            className="max-w-sm h-8 dark:bg-slate-950"
           />
         </div>
-        {/* <AddUser /> */}
         {/* Column visibility */}
-
       </div>
 
       {/* Table */}
-      <div className="  rounded-md border">
+      <div className="rounded-md border">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (

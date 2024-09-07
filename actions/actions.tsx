@@ -74,8 +74,10 @@ export const getUsers = async () => {
 
 
   const apiUrl = process.env.NEXTAUTH_URL
+  console.log({apiUrl})
   const res = await fetch(`${apiUrl}/api/register`);
   const data = await res.json();
+  console.log("getuser",data.users)
   return data.users;
   
 };

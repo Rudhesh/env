@@ -92,7 +92,7 @@ const AddUser = () => {
           <DialogHeader>
             <DialogTitle>Create User</DialogTitle>
             <DialogDescription>
-              Add new user profile. Click save when you're done.
+              Add new user profile. Click save when you are done.
             </DialogDescription>
           </DialogHeader>
           <form action={clientAction}>

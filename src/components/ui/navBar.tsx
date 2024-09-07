@@ -8,15 +8,15 @@ import { getTranslations } from "next-intl/server";
 import { Sheet, SheetContent, SheetTrigger } from "./sheet";
 import Sidebar from "./sidebar";
 import Navigation from "./langNavBar/Navigation";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/app/api/auth/[...nextauth]/authOpt";
 
 const NavBar = async () => {
   const session = await getServerSession(authOptions);
-  console.log(session?.user.role);
+  console.log("nav",session?.user);
   // const { resolvedTheme } = useTheme();
   // const logoSrc = resolvedTheme !== 'dark' ? '/logo-Envotech(1).png' : '/logo-Envotech(1).png';
   const t = await getTranslations("Navbar");
-  console.log("session", session?.user.role);
+  console.log("sesion", session?.user.role);
 
   return (
     <div className="fixed w-full  bg-slate-100 dark:bg-slate-800 shadow-md dark:shadow-md z-20">

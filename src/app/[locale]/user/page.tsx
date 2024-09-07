@@ -6,9 +6,9 @@ import {
   Table,
   TableBody,
   TableCell,
-  TableRow,
+  TableRow, 
 } from "@/components/ui/table"
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/app/api/auth/[...nextauth]/authOpt";
 export default async function User() {
   const session = await getServerSession(authOptions)
     return (
@@ -23,7 +23,7 @@ export default async function User() {
           </div>
         </div>
         <div className=" border  sm:max-w-[825px]">
-        <Table>
+        <Table>               
           <TableBody>
             <TableRow>
               <TableCell >

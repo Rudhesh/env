@@ -6,7 +6,7 @@ import { getTranslations } from "next-intl/server";
 import { getUsers, userData } from "../../../../actions/actions";
 import { getServerSession } from "next-auth";
 import { redirect } from 'next/navigation';
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/app/api/auth/[...nextauth]/authOpt";
 
 export default async function UserAdmin() {
 
@@ -21,7 +21,7 @@ export default async function UserAdmin() {
   }
   return (
     <Layout>
-      <div className="p-10 rounded">
+      <div className="container mx-auto p-8 flex flex-col sm:max-w-[825px]">
    
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-2x1 font-bold">{t("title")}</h1>

@@ -7,7 +7,6 @@ import "react-resizable/css/styles.css";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -15,6 +14,9 @@ import { Button } from "@/components/ui/button";
 import { DataTable } from "@/components/data-table";
 import { columns } from "../panel/columns";
 import EditPanel from "../panel/editPanel";
+import AreaChartGraph from "@/components/panel/AreaChartGraph";
+import LineChartGraph from "@/components/panel/LineChartGraph";
+import RadarChartGraph from "@/components/panel/RadarChartGraph";
 
 interface Panel {
   id: string | number;
@@ -117,7 +119,7 @@ const Dashboards = () => {
                 </CardHeader>
                 <CardContent>
                   {panel.showGraph ? (
-                    <Graph data={panel.data.filteredData || []} />
+                    <RadarChartGraph data={panel.data.filteredData || []} />
                   ) : (
                     <DataTable
                       columns={columns}

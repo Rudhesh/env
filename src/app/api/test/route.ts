@@ -1,4 +1,3 @@
-import nodemailer from 'nodemailer';
 
 
 export async function GET(request: Request) {

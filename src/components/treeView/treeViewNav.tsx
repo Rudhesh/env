@@ -232,7 +232,7 @@ const TreeViewNav: React.FC = () => {
     >
       <ResizablePanel defaultSize={25}>
         <div>
-        <div className="h-[750px] overflow-y-auto border border-gray-300 p-2 rounded">
+        <div className="min-h-screen overflow-y-auto border border-gray-300 p-2 rounded">
         <TreeView
           defaultCollapseIcon={<ChevronDown />}
           defaultExpandIcon={<ChevronRight />}
@@ -259,8 +259,8 @@ const TreeViewNav: React.FC = () => {
           childNodeCount={countChildNodes(selectedNode)}
         />
       ) : (
-        <div className="flex items-center justify-center h-[750px] border border-gray-300 rounded">
-          <div>"Click on a tree node for information."</div>
+        <div className="flex items-center justify-center h-screen  border border-gray-300 rounded">
+          <div>Click on a tree node for information.</div>
         </div>
       )}
     </div>
