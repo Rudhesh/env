@@ -37,6 +37,7 @@ export function DataTable<TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
+  // Hooks are now called at the top level, ensuring they are always called in the same order.
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
@@ -58,7 +59,8 @@ export function DataTable<TData, TValue>({
     getPaginationRowModel: getPaginationRowModel(),
   });
 
-  if (!data) {
+  // If there is no data, display a fallback message
+  if (!data || data.length === 0) {
     return <div>Error: Data is unavailable at the moment.</div>;
   }
 

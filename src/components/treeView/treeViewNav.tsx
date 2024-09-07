@@ -267,38 +267,7 @@ const TreeViewNav: React.FC = () => {
         </div>
       </ResizablePanel>
     </ResizablePanelGroup></div>
-  //   <div className="grid grid-cols-4 pt-2">
-  //   <div className="col-span-1 mr-2">
-  //     <div className="h-[750px] overflow-y-auto border border-gray-300 p-2 rounded">
-  //       <TreeView
-  //         defaultCollapseIcon={<ChevronDown />}
-  //         defaultExpandIcon={<ChevronRight />}
-  //       >
-  //         {treeData.loading && <div>Loading...</div>}
-  //         {!treeData.loading && treeData.error ? (
-  //           <div>Error: {treeData.error}</div>
-  //         ) : null}
-  //         {!treeData.loading && treeData.dataElements.length ? (
-  //           <div>{renderTree(treeData.dataElements)}</div>
-  //         ) : null}
-  //       </TreeView>
-  //     </div>
-  //   </div>
-
-  //   <div className="col-span-3">
-  //     {selectedNode ? (
-  //       <NodeDetail
-  //         path={pathToNode}
-  //         node={selectedNode}
-  //         childNodeCount={countChildNodes(selectedNode)}
-  //       />
-  //     ) : (
-  //       <div className="flex items-center justify-center h-[750px] border border-gray-300 rounded">
-  //         <div>"Click on a tree node for information."</div>
-  //       </div>
-  //     )}
-  //   </div>
-  // </div>
+ 
 
   );
 };
